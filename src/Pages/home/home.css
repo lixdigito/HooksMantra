@@ -1,0 +1,14 @@
+.Home{
+  display: grid;
+  
+}
+
+button{
+  height: 45px;
+  width: 180px;
+  cursor: pointer;
+}
+
+.linha {
+  display: flex;  
+}
