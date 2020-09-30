@@ -12,3 +12,11 @@ button{
 .linha {
   display: flex;  
 }
+
+.gridModal {
+  width: 30rem;
+}
+
+.gridChildren {
+  width: 30rem;
+}

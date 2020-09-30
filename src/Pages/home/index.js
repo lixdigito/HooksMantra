@@ -1,17 +1,22 @@
-import React, { useState, useCallback} from 'react';
+import React, { useState, useCallback, useEffect} from 'react';
 import Row from './Row';
 import Save from './Save';
 import Context from './Context';
+import Modal from '../../Components/Modal';
 
 import './home.css';
 
 export default function Home () {
 
   const [objectRender, setObjectRender] = useState(<div></div>);
+  const [showModal, setShowModal] = useState(true);
   const HeaderCallback = useCallback(() => {
     return <div>{`HeaderCallback`}</div>;
   },[]);
 
+  useEffect(() => {
+    console.log('showModal', showModal)
+  }, [showModal]);
 
   const Tab1 = useCallback(() => {
     console.log('Tab 1');
@@ -25,9 +30,17 @@ export default function Home () {
     </div>);
   },[]);
 
+  function handleOpenModas() {
+    setShowModal(true);
+  }
+
   const Tab2 = useCallback(() => {
     console.log('Tab 3');
-    return <div>Tab 2</div>;
+    return (
+      <div>
+        <div>Tab 2</div>        
+      </div>
+    );
   },[]);
 
   const Tab3 = useCallback(() => {
@@ -50,6 +63,16 @@ export default function Home () {
         <HeaderCallback />
         <GridButtonsTab />
         {objectRender}
+        <div className='gridModal'>
+          <Modal
+            title='MODAL'
+            show={showModal}
+            handleClose={setShowModal}
+          >
+            <div className='gridChildren'>Test</div>
+          </Modal>
+        </div>        
+        <button onClick={handleOpenModas}>open modal</button>
       </div>
     </Context.Provider>    
   );
